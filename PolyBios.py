@@ -46,9 +46,7 @@ def descodifica(fila, columna, vector, files, columnes):
 # si caràcter és lletra 'a'..'z' retorna <caracter> descodificat usant la combinació de <vector>
 # altrament retorna caràcter tal qual
     if fila >= 'A' and fila <= chr(ord('A') + files) and columna >= 'A' and columna <= chr(ord('A') + columnes):
-        found = False
         k = 0
-        char = ""
         while k < len(vector) and not (vector[k].row == fila and vector[k].column == columna): 
             k += 1
         ## Si no l'he trobat
