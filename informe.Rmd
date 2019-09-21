@@ -2,6 +2,10 @@
 title: "Seguretat i Protecció de dades - Pràctica 1"
 author: "Marc Sànchez Pifarré"
 date: "21 de setembre de 2019"
+titlepage: true
+titlepage-color: 3C9F53
+titlepage-text-color: FFFFFF
+titlepage-rule-height: 4
 header-includes:
     - \usepackage{fancyhdr}
     - \pagestyle{fancy}
@@ -9,10 +13,11 @@ header-includes:
     - \fancyfoot[CO,CE]{}
     - \fancyfoot[LE,RO]{\thepage}
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     toc: yes
+    template: eisvogel.tex
+  html_document:
+    df_print: paged
 ---
 
 \newpage
@@ -61,14 +66,20 @@ Amb aquestes proves l'algoritme queda testejat i estressat. Suficients per contr
 
 Fem la prova amb un text del lorem Ipsum.
 
+
+
 ```{Python}
-
 entreu un nombre natural corresponent al desplacament: 56253
-
+```
+```{Python}
 entra el text que vols xifrar: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+```
 
+```{Python}
 TEXT XIFRAT:  Ldgtb Iehjb xh hxbean sjbbn itmi du iwt egxcixcv pcs inethtiixcv xcsjhign. Ldgtb Iehjb wph qttc iwt xcsjhign'h hipcspgs sjbbn itmi tktg hxcrt iwt 1500h, lwtc pc jczcdlc egxcitg iddz p vpaatn du inet pcs hrgpbqats xi id bpzt p inet hetrxbtc qddz. Ii wph hjgkxkts cdi dcan uxkt rtcijgxth, qji pahd iwt atpe xcid tatrigdcxr inethtiixcv, gtbpxcxcv thhtcixpaan jcrwpcvts. Ii lph edejapgxhts xc iwt 1960h lxiw iwt gtatpht du Ltigphti hwttih rdcipxcxcv Ldgtb Iehjb ephhpvth, pcs bdgt gtrtcian lxiw sthzide ejqaxhwxcv hduilpgt axzt Aasjh PpvtMpztg xcrajsxcv ktghxdch du Ldgtb Iehjb
+```
 
+```{Python}
 TEXT ORIGINAL:  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
 ```
 
@@ -172,17 +183,26 @@ Fem la prova amb un text del lorem Ipsum.
 Entreu el nombre de files i columnes, recorda dimensionar correctament la matriu => files >= 5 and columnes >= 5!
 Entra el nombre de files : 5
 Entra el nombre de columnes : 5
-
+```
+```{Python}
 entra el text que vols xifrar: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+```
 
-TEXT XIFRAT:  CACDDBAECB BDCEDCDECB BDDC DCBDCBCECAED ADDECBCBED DDAEECDD CDBA DDBCAE CEDBBDCCDDBDCCBB AACCAD DDEDCEAEDCAEDDDDBDCCBB BDCCADDEDCDDDBED. CACDDBAECB BDCEDCDECB BCAADC ABAEAECC DDBCAE BDCCADDEDCDDDBED'DC DCDDAACCADAADBAD ADDECBCBED DDAEECDD AEEAAEDB DCBDCCACAE DDBCAE 1500DC, EBBCAECC AACC DECCBECCCDEBCC CEDBBDCCDDAEDB DDCDCDBE AA BBAACACAAEED CDBA DDEDCEAE AACCAD DCACDBAACBABCAAEAD BDDD DDCD CBAABEAE AA DDEDCEAE DCCEAEACBDCBAECC ABCDCDBE. BDDD BCAADC DCDEDBEABDEAAEAD CCCDDD CDCCCAED BABDEAAE ACAECCDDDEDBBDAEDC, ABDEDD AACADCCD DDBCAE CAAEAACE BDCCDDCD AECAAEACDDDBCDCCBDAC DDEDCEAEDCAEDDDDBDCCBB, DBAECBAABDCCBDCCBB AEDCDCAECCDDBDAACACAED DECCACBCAACCBBAEAD. BDDD EBAADC CECDCEDECAAADBBDDCAEAD BDCC DDBCAE 1960DC EBBDDDBC DDBCAE DBAECAAEAADCAE CDBA CAAEDDDBAADCAEDD DCBCAEAEDDDC ACCDCCDDAABDCCBDCCBB CACDDBAECB BDCEDCDECB CEAADCDCAABBAEDC, AACCAD CBCDDBAE DBAEACAECCDDCAED EBBDDDBC ADAEDCBEDDCDCE CEDEABCABDDCBCBDCCBB DCCDBADDEBAADBAE CABDBEAE AACAADDEDC CEAABBAECBAABEAEDB BDCCACCADEADBDCCBB EAAEDBDCBDCDCCDC CDBA CACDDBAECB BDCEDCDECB.
+```{Python}
+TEXT XIFRAT:  
+```
+  
+```{Python}
+CACDDBAECB BDCEDCDECB BDDC DCBDCBCECAED ADDECBCBED DDAEECDD CDBA DDBCAE CEDBBDCCDDBDCCBB AACCAD DDEDCEAEDCAEDDDDBDCCBB BDCCADDEDCDDDBED. CACDDBAECB BDCEDCDECB BCAADC ABAEAECC DDBCAE BDCCADDEDCDDDBED'DC DCDDAACCADAADBAD ADDECBCBED DDAEECDD AEEAAEDB DCBDCCACAE DDBCAE 1500DC, EBBCAECC AACC DECCBECCCDEBCC CEDBBDCCDDAEDB DDCDCDBE AA BBAACACAAEED CDBA DDEDCEAE AACCAD DCACDBAACBABCAAEAD BDDD DDCD CBAABEAE AA DDEDCEAE DCCEAEACBDCBAECC ABCDCDBE. BDDD BCAADC DCDEDBEABDEAAEAD CCCDDD CDCCCAED BABDEAAE ACAECCDDDEDBBDAEDC, ABDEDD AACADCCD DDBCAE CAAEAACE BDCCDDCD AECAAEACDDDBCDCCBDAC DDEDCEAEDCAEDDDDBDCCBB, DBAECBAABDCCBDCCBB AEDCDCAECCDDBDAACACAED DECCACBCAACCBBAEAD. BDDD EBAADC CECDCEDECAAADBBDDCAEAD BDCC DDBCAE 1960DC EBBDDDBC DDBCAE DBAECAAEAADCAE CDBA CAAEDDDBAADCAEDD DCBCAEAEDDDC ACCDCCDDAABDCCBDCCBB CACDDBAECB BDCEDCDECB CEAADCDCAABBAEDC, AACCAD CBCDDBAE DBAEACAECCDDCAED EBBDDDBC ADAEDCBEDDCDCE CEDEABCABDDCBCBDCCBB DCCDBADDEBAADBAE CABDBEAE AACAADDEDC CEAABBAECBAABEAEDB BDCCACCADEADBDCCBB EAAEDBDCBDCDCCDC CDBA CACDDBAECB BDCEDCDECB.
+```
 
+```{Python}
 TEXT ORIGINAL:  lorem ipsum is simply dummy text of the printing and typesetting industry. lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. it has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. it was popularised in the 1960s with the release of letraset sheets containing lorem ipsum passages, and more recently with desktop publishing software like aldus pagemaker including versions of lorem ipsum
 ```
 
 Aquest algoritme tal i com està muntat no permet més d'una volta d'encriptat.
 
-## Apartat c, RailFence
+## Apartat c, RailFence```
 
 Algoritme per transformació, no cal substituïr caràcters sinó simplement desordenar-los. En aquest cas s'ha optat per actuar amb tots els caràcters sense tenir en copmte si son o no lletres que pertanyen a l'alfabet anglés, es desordena tot!
 
@@ -230,9 +250,13 @@ Aquí ja tenim testejat l'algoritme en els extrems. Quan hi ha 1 sol carril, qua
 ```{Python}
 entreu un nombre natural corresponent al Nombre de rails: 10
 entra el text que vols xifrar: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+```
 
+```{Python}
 TEXT XIFRAT: Lmyxpntt  i d es rk nea bad u le niiawrhileeimsde usiPivfso  trdirIbnsue ,ui oddksos fraeltgnanaieteten s ndbokane urid i nypedtmvt nnaf  epo niilaey,glgss hartiIamtelfegcrLmesuontg.seuamehwkt  si eksovespcp  le e1 sasnpgolsit elso.m mfty  unsnyrehnegtctac.uteso tereydpd9tes gserykswAMuir sm ipiLm td   eorayr  i r  , irses .o 6h ec use thaladoeIiytneno trats1nw lpattmIvoc tnoemsu pi0eotoLm, woirdkinmpm hgsdrhhyrei5 ntlemoyetinebhtntaenIuns f no  ripneuens spte eueae'dxn0a oe b pn vlnueoitinctl  r strpaet g srg Iule atsms s tc0npoyalme heytt  cinth atweLhaeanchp l   op
+```
 
+```{Python}
 TEXT ORIGINAL: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ```
 
@@ -284,7 +308,7 @@ Mirem primerament el nombre de caràcters diferents amb els que ens enfrontem i 
 
 splitted <- as.data.frame(table(strsplit("xfimr litvxl. patm tkx px ebobgz yhk? tutgwhgxw ietvxl. b znxll px dghp max lvhkx. (la hp fnlm zh hg, ur jnxxg)", "")))
 splitted
-plot(splitted)
+plot(splitted, type="h", ylab="Aparicions", xlab="lletres", sub="Histograma d'aparicions")
 
 ```
 
@@ -302,4 +326,18 @@ Type "help", "copyright", "credits" or "license" for more information.
 'empty spaces. what are we living for? abandoned places. i guess we know the score. (sh ow must go on, by queen)'
 ```
 
-[The show must go on](https://www.youtube.com/watch?v=qMUle97yGE4)
+[The show must go on -> https://www.youtube.com/watch?v=qMUle97yGE4](https://www.youtube.com/watch?v=qMUle97yGE4)
+
+\newpage
+
+## Referències 
+
+- **Transparències Tema 1 - Seguretat i protecció de dades** : [https://moodle2.udg.edu/pluginfile.php/1175534/mod_resource/content/3/SPD_T1_intro.pdf](https://moodle2.udg.edu/pluginfile.php/1175534/mod_resource/content/3/SPD_T1_intro.pdf)
+
+- **Enunciat de la pràctica** : [https://moodle2.udg.edu/pluginfile.php/1175524/mod_resource/content/3/exercici1.pdf](https://moodle2.udg.edu/pluginfile.php/1175524/mod_resource/content/3/exercici1.pdf)
+
+- **Tutorial de python** : [https://moodle2.udg.edu/mod/url/view.php?id=779085](https://moodle2.udg.edu/mod/url/view.php?id=779085)
+
+- **R Studio Split fuction** : [https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/strsplit](https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/strsplit)
+
+- **R Studio plot function** : [https://www.rdocumentation.org/packages/graphics/versions/3.6.1/topics/plot](https://www.rdocumentation.org/packages/graphics/versions/3.6.1/topics/plot)
