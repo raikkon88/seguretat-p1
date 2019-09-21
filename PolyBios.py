@@ -1,14 +1,12 @@
-
-import os
-os.environ["PYTHONIOENCODING"] = "utf-8"
-# sencill programa de xifrat i desxifrat per substitució (tipus xifrat PolyBios)
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# senzill programa de xifrat i desxifrat per substitució (tipus xifrat PolyBios)
 # alfabet text en clar: lletres alfabet anglès 'a'..'z' (només minúscules) + signes de puntuació (no s'encripten)
 # alfabet text xifrat : el mateix
 
 L = 26 # nombre caràcters alfabet
 
-
-
+import Utils
 
 ## CLASS DEFINITION 
 ##########################################################################
@@ -25,12 +23,6 @@ class PolyTuple:
 
     def __repr__(self):
         return str(self)
-
-
-def obteNum(text):
-# retorna un enter corresponent al desplaçament d'un simple xifrat tipus Cèsar
-    desp = input(text)
-    return int(desp) 
 
 def codifica(caracter, vector):
 # si caràcter és lletra 'a'..'z' retorna <caracter> codificat usant la combinació de <vector>
@@ -59,14 +51,8 @@ def descodifica(fila, columna, vector, files, columnes):
     else:
         return fila+columna
 
-def polybios():
-    print("Entreu el nombre de files i columnes, recorda dimensionar correctament la matriu!")
-    f = obteNum("Entra el nombre de files : ")
-    c = obteNum("Entra el nombre de columnes : ")
-
-    print(f)
-    print(c)
-    # Representem la matriu com un vector lineal on hi ha tants elements com lletres de l'alfabet. 
+def createMatrix(f, c):
+# Representem la matriu com un vector lineal on hi ha tants elements com lletres de l'alfabet. 
     vector = [0 for x in range(L)]
 
     # Per representar la matriu es crea un objecte PolyTuple que conté els valors per la lletra, la fila i la columna de la matriu. 
@@ -84,28 +70,38 @@ def polybios():
     row = 'A'
     col = 'A'
     while(ord(letter) < L + ord('a')):
-        vector[ord(letter) - ord('a')] = PolyTuple(letter, row, col)
-        letter = chr(ord(letter) + 1)
-        col = chr(ord(col) + 1)
-        
-        if (ord(col) - ord('A')) % c == 0: 
-            col = 'A'
-            row = chr(ord(row) + 1)
-            if (ord(row) - ord('A')) % f == 0: 
-                row = 'A'
+        # Per adaptar-nos a la taula de les transparències es fa colisionar la i i la j. 
+        if(letter == 'j' and f == 5 and c == 5):
+            vector[ord(letter) - ord('a')] = PolyTuple(letter, 'B', 'D')
+            letter = chr(ord(letter) + 1)
+        else:
+            vector[ord(letter) - ord('a')] = PolyTuple(letter, row, col)
+            letter = chr(ord(letter) + 1)
+            col = chr(ord(col) + 1)
+            
+            if (ord(col) - ord('A')) % c == 0: 
+                col = 'A'
+                row = chr(ord(row) + 1)
+                if (ord(row) - ord('A')) % f == 0: 
+                    row = 'A'
 
-    print(vector)
+    return vector
+
+def codificaText(text, f, c):
 
     # Codifiquem
     text_xifrat = ""
-    text = input("entra el text que vols xifrar: ")
+    vector = createMatrix(f, c)
+    
     for k in range(len(text)):
         text_xifrat += codifica(text[k], vector)
 
-    print("TEXT XIFRAT: ", text_xifrat) 
+    return text_xifrat
 
+def descodificaText(text_xifrat, f, c):
     # ara decodificarem
     text_original = ""
+    vector = createMatrix(f, c)
 
     k = 0
     while(k + 1 < len(text_xifrat)):
@@ -115,9 +111,22 @@ def polybios():
         else: 
             text_original += text_xifrat[k]
             k += 1
-          
 
-    print("TEXT ORIGINAL: ", text_original) 
+    return text_original
 
+def polybios():
+# Obté el nombre de files i de columnes i un text i mostra el text codificat en polybios
+# Després mostra el text descodificat
 
-polybios()
+    print("Entreu el nombre de files i columnes, recorda dimensionar correctament la matriu => files >= 5 and columnes >= 5!")
+    f = Utils.obteNum("Entra el nombre de files : ")
+    c = Utils.obteNum("Entra el nombre de columnes : ")
+    if f < 5 or c < 5: 
+        print("nombre de files < 5 o nombre de columnes < 5")
+        polybios()
+    else:
+      text = input("entra el text que vols xifrar: ")
+      text_xifrat = codificaText(text.lower(), f, c)
+      print("TEXT XIFRAT: ", text_xifrat) 
+      text_original = descodificaText(text_xifrat, f, c)
+      print("TEXT ORIGINAL: ", text_original) 

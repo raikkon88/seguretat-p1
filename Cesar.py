@@ -1,16 +1,12 @@
-import os
-os.environ["PYTHONIOENCODING"] = "utf-8"
-
-# sencill programa de xifrat i desxifrat per substitució (tipus xifrat cèsar)
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# senzill programa de xifrat i desxifrat per substitució (tipus xifrat cèsar)
 # alfabet text en clar: lletres alfabet anglès 'a'..'z' (només minúscules) + signes de puntuació (no s'encripten)
 # alfabet text xifrat : el mateix
 
-L = 26 # nombre caràcters alfabet
+import Utils
 
-def obteNum(text):
-# retorna un enter corresponent al desplaçament d'un simple xifrat tipus Cèsar
-    desp = input(text)
-    return int(desp) 
+L = 26 # nombre caràcters alfabet
     
 def codifica(caracter, despl):
 # si caràcter és lletra 'a'..'z' retorna <caracter> codificat usant <despl>
@@ -28,21 +24,24 @@ def descodifica(caracter, despl):
     else:
         return caracter
         
-def cesar():
-# obté un desplaçament i un text, i mostra el text codificat amb mètode Cèsar (amb el desp. entrat)
-# després el decodifica i mostra l'original
-    desp = obteNum("entreu un nombre natural corresponent al desplaçament: ")
-    text = input("entra el text que vols xifrar: ")
+def codificaText(text, desp):
     text_xifrat = ""
     for k in range(len(text)):
         text_xifrat += codifica(text[k], desp)
-    print("TEXT XIFRAT: ", text_xifrat) 
-    # ara decodificarem
+    return text_xifrat
+
+def descodificaText(text, desp):
     text_original = ""
-    for k in range(len(text_xifrat)):
+    for k in range(len(text)):
         text_original += descodifica(text[k], desp)
-    print("TEXT ORIGINAL: ", text_original) 
-        
+    return text_original
 
-
-cesar()
+def cesar():
+# obté un desplaçament i un text, i mostra el text codificat amb mètode Cèsar (amb el desp. entrat)
+# després el decodifica i mostra l'original
+    desp = Utils.obteNum("Entreu un nombre natural corresponent al desplacament: ") % L
+    text = input("entra el text que vols xifrar: ")
+    text_xifrat = codificaText(text, desp)
+    print("TEXT XIFRAT: ", text_xifrat)
+    # ara decodificarem
+    print("TEXT ORIGINAL: ", descodificaText(text_xifrat, desp))
